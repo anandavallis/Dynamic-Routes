@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Routing with URL Parameters</title>
+    <link rel="stylesheet" href="./style.css">
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-brand" onclick="router.navigate('/')">Dynamic Routes Demo</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link" onclick="router.navigate('/')" data-route="/">Home</a>
+                <a href="#" class="nav-link" onclick="router.navigate('/users')" data-route="/users">Users</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>Dynamic Routes Demo</h1>
+                <p>Explore dynamic routing with URL parameters using vanilla JavaScript</p>
+                <button class="btn" onclick="router.navigate('/users')">
+                    👥 View All Users
+                </button>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Features Demonstrated</h3>
+                    <ul class="feature-list">
+                        <li>Dynamic route parameters (/users/:id)</li>
+                        <li>Custom useParams simulation</li>
+                        <li>Programmatic navigation</li>
+                        <li>Route-based data fetching</li>
+                        <li>Error handling for invalid routes</li>
+                        <li>Loading states and transitions</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Navigation Examples</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <button class="btn" onclick="router.navigate('/users/1')" style="width: 100%;">
+                            /users/1 - John Doe
+                        </button>
+                        <button class="btn" onclick="router.navigate('/users/2')" style="width: 100%;">
+                            /users/2 - Jane Smith
+                        </button>
+                        <button class="btn" onclick="router.navigate('/users/999')" style="width: 100%;">
+                            /users/999 - Not Found Example
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users List Page -->
+        <div id="users" class="page">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h1 style="color: white; font-size: 2.5rem;">All Users</h1>
+                <button class="btn btn-secondary" onclick="router.navigate('/')">
+                    ← Back to Home
+                </button>
+            </div>
+            
+            <div class="users-grid" id="users-grid">
+                <!-- Users will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- User Detail Page -->
+        <div id="user-detail" class="page">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h1 style="color: white; font-size: 2.5rem;">User Profile</h1>
+                <button class="btn btn-secondary" onclick="router.navigate('/users')">
+                    ← Back to Users
+                </button>
+            </div>
+            
+            <div id="user-detail-content">
+                <!-- User detail content will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- 404 Page -->
+        <div id="not-found" class="page">
+            <div class="error">
+                <div class="error-icon">404</div>
+                <h2>Page Not Found</h2>
+                <p>The page you're looking for doesn't exist.</p>
+                <div class="error-actions">
+                    <button class="btn" onclick="router.navigate('/')">Go Home</button>
+                    <button class="btn btn-secondary" onclick="router.navigate('/users')">View Users</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+       
